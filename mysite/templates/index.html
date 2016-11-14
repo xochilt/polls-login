@@ -1,0 +1,31 @@
+<style>
+body {background-color: powderblue;}
+h1   {color: green;}
+h2   {color: blue;}
+ul   {color: red;}
+</style>
+
+{% if user %}
+Bienvenido <b>{{ user }}.</b> <br><br>
+<a href="/logout/">Logout</a>
+{% else %}
+Bienvenido anonimo.<br><br>
+<a href="accounts/login/">Login</a>
+{% endif %}
+
+<hr>
+
+<h1> POLLS </h1>
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'detail' question.id %}">
+        	<h2>{{ question.question_text }}</h2></a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+

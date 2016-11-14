@@ -1,0 +1,8 @@
+
+{% load i18n %}
+
+{% trans "Activacion de la cuenta en el sitio: " %} {{ site.name }}:
+
+http://{{ site.domain }}{% url 'registration_activate' activation_key %}
+
+{% blocktrans %}Este correo es valido por {{ expiration_days }} dias.{% endblocktrans %}
